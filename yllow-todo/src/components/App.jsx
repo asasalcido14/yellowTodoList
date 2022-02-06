@@ -2,9 +2,17 @@ import React, { useState } from "react";
 
 function App() {
 	const [inputText, setInputText] = useState("");
+	const [items, setItems] = useState([]);
+
 	function handleChange(event) {
 		const newValue = event.target.value;
 		setInputText(newValue);
+	}
+	function addItem() {
+		setItems((prevItems) => {
+			return [...prevItems, inputText];
+		});
+		setInputText("");
 	}
 
 	return (
@@ -15,13 +23,16 @@ function App() {
 			<div className="form">
 				<input onChange={handleChange} type="text" value={inputText} />
 
-				<button>
+				<button onClick={addItem}>
 					<span>Add</span>
 				</button>
 			</div>
 			<div>
 				<ul>
-					<li>A Item </li>
+					{items.map((todoItem) => (
+						<li>{todoItem}</li>
+					))}
+					{/* .map is mapping through all of the todoItems and then put the item in the list */}
 				</ul>
 			</div>
 		</div>
