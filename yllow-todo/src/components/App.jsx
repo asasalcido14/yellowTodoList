@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import toDoItem from "./ToDoItem";
+import ToDoItem from "./ToDoItem";
 
 function App() {
 	const [inputText, setInputText] = useState("");
@@ -9,12 +9,14 @@ function App() {
 		const newValue = event.target.value;
 		setInputText(newValue);
 	}
+
 	function addItem() {
 		setItems((prevItems) => {
 			return [...prevItems, inputText];
 		});
 		setInputText("");
 	}
+
 	function deleteItem(id) {
 		setItems((prevItems) => {
 			return prevItems.filter((item, index) => {
@@ -22,6 +24,7 @@ function App() {
 			});
 		});
 	}
+
 	return (
 		<div className="container">
 			<div className="heading">
@@ -29,7 +32,6 @@ function App() {
 			</div>
 			<div className="form">
 				<input onChange={handleChange} type="text" value={inputText} />
-
 				<button onClick={addItem}>
 					<span>Add</span>
 				</button>
@@ -37,14 +39,13 @@ function App() {
 			<div>
 				<ul>
 					{items.map((todoItem, index) => (
-						<toDoItem
+						<ToDoItem
 							key={index}
 							id={index}
-							text={toDoItem}
+							text={todoItem}
 							onChecked={deleteItem}
 						/>
 					))}
-					{/* .map is mapping through all of the todoItems and then put the item in the list */}
 				</ul>
 			</div>
 		</div>
