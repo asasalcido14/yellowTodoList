@@ -22,7 +22,7 @@ function App() {
 	return (
 		<div className="container">
 			<div className="heading">
-				<h1>To-Do List</h1>
+				<h1> Asa's Handy Dandy List</h1>
 			</div>
 			<InputArea onAdd={addItem} />
 			<div>
